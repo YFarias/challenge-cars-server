@@ -8,7 +8,7 @@ const { isAuthenticated, isAdmin } = require("./../middleware/jwt.middleware");
 
 const saltRounds = 10;
 
-// POST /auth/signup
+//!Post /auth/signup
 router.post("/auth/signup", async (req, res, next) => {
   try {
     // Get the data from req.body
@@ -71,7 +71,7 @@ router.post("/auth/signup", async (req, res, next) => {
   }
 });
 
-// POST /auth/login
+//!Post /auth/login
 router.post("/auth/login", async (req, res, next) => {
   try {
     // Get values from req.body
@@ -101,7 +101,6 @@ router.post("/auth/login", async (req, res, next) => {
         email: foundUser.email,
         name: foundUser.name,
         role: foundUser.role, // 'admin' or 'user'
-        image: foundUser.image, 
       };
 
       // Create a JWT with the payload
@@ -121,7 +120,7 @@ router.post("/auth/login", async (req, res, next) => {
   }
 });
 
-// GET /auth/verify  - Verify tokens stored in the frontend
+//!Get /auth/verify  - Verify tokens stored in the frontend
 router.get("/auth/verify", isAuthenticated, async (req, res, next) => {
   try {
     // If JWT is valid the payload gets decoded by isAuthenticated middleware
